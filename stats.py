@@ -14,3 +14,12 @@ def count_characters(text: str) -> dict[str, int]:
     for c in text:
         characters[c] = characters.get(c, 0) + 1
     return characters
+
+def sort_characters(char_dict: dict[str, int]) -> list[dict[str, int]]:
+    char_list = [{"char": c, "num": n} for c, n in char_dict.items() if c.isalpha()]
+
+    def sort_on(item: dict[str, int]) -> int:
+        return item["num"]
+
+    char_list.sort(key=sort_on, reverse=True)
+    return char_list
